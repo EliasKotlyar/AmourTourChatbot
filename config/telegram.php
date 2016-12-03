@@ -56,8 +56,10 @@ return [
     |
     */
     'commands' => [
-        Telegram\Bot\Commands\HelpCommand::class,
-        App\Telegram\Commands\StartCommand::class,
-        App\Telegram\Commands\HelpCommand::class
+        //Telegram\Bot\Commands\HelpCommand::class,
+        //App\Telegram\Commands\StartCommand::class,
+        //App\Telegram\Commands\HelpCommand::class
+        \App\Telegram\Commands\GreetingCommand::class,
+        \App\Telegram\Commands\ActivityCommand::class
     ],
 ];

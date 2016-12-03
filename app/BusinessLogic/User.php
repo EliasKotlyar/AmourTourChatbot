@@ -11,11 +11,11 @@ class User
 
     public function __construct()
     {
-        $moods [] = new Mood("Anger", '0');
-        $moods [] = new Mood("Disgust", '192');
-        $moods [] = new Mood("Fear", '155');
-        $moods [] = new Mood("Joy", '64');
-        $moods [] = new Mood("Sadness", '24');
+        $moods [] = new Mood("Anger", '0',"It seems like your partner is not that happy, to be exactly he/she is angry or bitchy.");
+        $moods [] = new Mood("Disgust", '192',"Maybe your partner needs some personal time.");
+        $moods [] = new Mood("Fear", '155',"Your partner feels fear and doubt. Support your sweetheart! ");
+        $moods [] = new Mood("Joy", '64',"Perfect! You can do something really special: Your partner is joyful and cheery!");
+        $moods [] = new Mood("Sadness", '24',"You have to cheer your partner up because he/she is feeling sad and dismal. ");
 
         /*
 

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Telegram\Bot\Objects\Update;
 
 class TelegramListener extends Command
 {
@@ -38,17 +39,28 @@ class TelegramListener extends Command
      */
     public function handle()
     {
-        //
 
-        //
-        $update = Telegram::commandsHandler(false);
+        $updates = Telegram::commandsHandler(false);
 
-        /*
-        $offset = 0;
-        $offsetArray = ['offset' => $offset];
-        $update = Telegram::getUpdates($offsetArray);
-        //var_dump($update);
-        */
+        foreach ($updates as $update) {
+            /** @var Update $update */
+            $telegramMessage = $update->getMessage();
+            $type = $telegramMessage->detectType();
+            if ($type == 'text'){
+                $text = $telegramMessage->getText();
+                echo $text."\r\n";
+                if(stripos($telegramMessage->getText(),'hello')!==false){
+
+                    Telegram::triggerCommand('greeting',$update);
+                }
+                if(stripos($telegramMessage->getText(),'activity')!==false){
+
+                    Telegram::triggerCommand('activity',$update);
+                }
+
+            }
+        }
+
 
 
     }

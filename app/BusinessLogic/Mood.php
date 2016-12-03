@@ -7,17 +7,19 @@ class Mood
     protected $name;
     protected $color;
     protected $percentage;
+    protected $moodText;
 
     /**
      * Mood constructor.
      * @param $name
      * @param $color
      */
-    public function __construct($name, $color)
+    public function __construct($name, $color,$moodText)
     {
         $this->name = $name;
         $this->color = $color;
         $this->percentage = rand(0, 100);
+        $this->moodText = $moodText;
     }
 
     /**
@@ -66,5 +68,21 @@ class Mood
     public function getPercentage()
     {
         return $this->percentage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMoodText()
+    {
+        return $this->moodText;
+    }
+
+    /**
+     * @param mixed $moodText
+     */
+    public function setMoodText($moodText)
+    {
+        $this->moodText = $moodText;
     }
 }

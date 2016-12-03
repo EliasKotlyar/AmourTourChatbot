@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\TelegramListener;
-use App\Console\Commands\TestChat;
+use App\Console\Commands\TestColors;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        TestChat::class,
+        TestColors::class,
         TelegramListener::class
 
         //

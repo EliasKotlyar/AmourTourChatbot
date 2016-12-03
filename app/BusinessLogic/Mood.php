@@ -53,10 +53,13 @@ class Mood
     }
 
     public function getColorValue(){
+        /*
         $myBlue = new Color("#".$this->getColor());
         $arr = $myBlue->getHsl();
         $value = $arr["H"];
         return (int)$value;
+        */
+        return $this->getColor();
 
     }
 

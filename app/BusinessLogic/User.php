@@ -11,11 +11,19 @@ class User
 
     public function __construct()
     {
-        $moods [] = new Mood("Anger", 'D80000');
-        $moods [] = new Mood("Disgust", '86008B');
-        $moods [] = new Mood("Fear", '280D7E');
-        $moods [] = new Mood("Joy", 'FFFC00');
-        $moods [] = new Mood("Sadness", '633D21');
+        $moods [] = new Mood("Anger", '0');
+        $moods [] = new Mood("Disgust", '192');
+        $moods [] = new Mood("Fear", '155');
+        $moods [] = new Mood("Joy", '64');
+        $moods [] = new Mood("Sadness", '24');
+
+        /*
+
+
+
+
+
+        */
         $this->moods = $moods;
     }
 

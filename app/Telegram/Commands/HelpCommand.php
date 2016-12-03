@@ -31,8 +31,8 @@ class HelpCommand extends Command
         $text = '<pre>' . $text . '</pre>';
         $this->replyWithMessage(['text' => $text, 'parse_mode' => 'html']);
         $colorValue = $user->retrieveHighestMood()->getColorValue();
-        echo $colorValue."\r\n";
-        file_get_contents(sprintf("http://192.168.168.24/mood?color=%s", $colorValue));
+        $url = sprintf("http://192.168.168.24/mood?color=%s", $colorValue);
+        $request = \Requests::get($url);
 
 
     }

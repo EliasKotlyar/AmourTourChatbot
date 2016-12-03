@@ -6,14 +6,14 @@ use App\BusinessLogic\UserProcessor;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\Table;
 
-class TestChat extends Command
+class TestColors extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'amour:testchat';
+    protected $signature = 'amour:testcolors';
 
     /**
      * The console command description.

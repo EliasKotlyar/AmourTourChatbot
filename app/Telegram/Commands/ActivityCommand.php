@@ -40,16 +40,17 @@ class ActivityCommand extends Command
         $moodName = strtolower($user->retrieveHighestMood()->getName());
         echo $moodName."\r\n";
         $url = sprintf("http://localhost:8080/test?mood=%s", $moodName);
-
+        echo $url."\r\n";
 
         $request = \Requests::get($url);
         $decodedValues = \GuzzleHttp\json_decode($request->body);
 
-        $text = "";
+        $text = "Here are the best rated activitys for you:\r\n";
         foreach($decodedValues as $value){
             $text.= sprintf("[%s](%s)\r\n", $value->name,$value->url);
         }
 
+        $text.= "If you need more activitys , go on our page: \r\n";
 
 
         $this->replyWithMessage(['text' => $text, 'parse_mode' => 'markdown']);

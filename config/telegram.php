@@ -60,6 +60,7 @@ return [
         //App\Telegram\Commands\StartCommand::class,
         //App\Telegram\Commands\HelpCommand::class
         \App\Telegram\Commands\GreetingCommand::class,
-        \App\Telegram\Commands\ActivityCommand::class
+        \App\Telegram\Commands\ActivityCommand::class,
+         \App\Telegram\Commands\ProblemCommand::class,
     ],
 ];

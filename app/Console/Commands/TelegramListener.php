@@ -58,6 +58,12 @@ class TelegramListener extends Command
                     Telegram::triggerCommand('activity',$update);
                 }
 
+                if(stripos($telegramMessage->getText(),'problem')!==false){
+
+                    Telegram::triggerCommand('problem',$update);
+                }
+
+
             }
         }
 

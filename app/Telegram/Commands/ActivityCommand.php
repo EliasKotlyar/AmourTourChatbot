@@ -42,6 +42,12 @@ class ActivityCommand extends Command
         $text = '<pre>' . $text . '</pre>';
         $this->replyWithMessage(['text' => $text, 'parse_mode' => 'html']);
 
+        $url = sprintf("http://localhost:8080/test?mood=%s", strtolower($user->retrieveHighestMood()->getName()));
+
+
+        $request = \Requests::get($url);
+
+
 
     }
 }

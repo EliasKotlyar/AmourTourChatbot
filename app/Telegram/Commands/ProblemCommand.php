@@ -6,17 +6,17 @@ use App\BusinessLogic\UserProcessor;
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
 
-class GreetingCommand extends Command
+class ProblemCommand extends Command
 {
     /**
      * @var string Command Name
      */
-    protected $name = "greeting";
+    protected $name = "problem";
 
     /**
      * @var string Command Description
      */
-    protected $description = "Greeting";
+    protected $description = "Problem";
 
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class GreetingCommand extends Command
     {
 
         var_dump($arguments);
-        $this->replyWithMessage(['text' => "Hello my friend, how are you? :)", 'parse_mode' => 'html']);
+        $this->replyWithMessage(['text' => "Whats the matter? How can i help you?", 'parse_mode' => 'html']);
 
 
 

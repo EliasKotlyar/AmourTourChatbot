@@ -5,7 +5,7 @@
 while true; do
 
     php artisan telegram:getupdates
-     sleep 5
+     sleep 2
 done
 
 

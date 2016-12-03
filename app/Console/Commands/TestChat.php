@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\BusinessLogic\UserProcessor;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\Table;
 
@@ -38,32 +39,20 @@ class TestChat extends Command
      */
     public function handle()
     {
+        $moodGenerator = new UserProcessor();
+        $user = $moodGenerator->getUser('');
+        foreach($user->retrieveMoods() as $mood){
+            $colorValue = $mood->getColorValue();
+            $url = sprintf("http://192.168.168.24/mood?color=%s", $colorValue);
+            echo $mood->getName()."\r\n";
+            $request = \Requests::get($url);
+            sleep(10);
+            echo $colorValue."\r\n";
+
+        }
 
 
-        $table = new Table($this->output);
-        $table
-            ->setHeaders(array('Emotion', '', ''))
-            ->setRows(array(
-                $this->createEmotion('Anger'),
-                $this->createEmotion('Disgust'),
-                $this->createEmotion('Fear'),
-                $this->createEmotion('Joy'),
-                $this->createEmotion('Sadness'),
-            ));
-
-
-        $table->render();
     }
 
-    public function createEmotion($string)
-    {
-        $percentage = rand(0, 100);
-        $percentageTen = round($percentage / 10, 0);
 
-        $percentageStr = str_pad("",$percentageTen,"#");
-        $percentageStr = str_pad($percentageStr,10," ");
-        $percentageStr = "[".$percentageStr."]";
-
-        return array($string, $percentageStr, $percentage."%");
-    }
 }

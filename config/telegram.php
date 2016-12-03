@@ -62,5 +62,6 @@ return [
         \App\Telegram\Commands\GreetingCommand::class,
         \App\Telegram\Commands\ActivityCommand::class,
          \App\Telegram\Commands\ProblemCommand::class,
+        \App\Telegram\Commands\PlacesCommand::class,
     ],
 ];

@@ -17,15 +17,46 @@ class ActivityCommand extends Command
      * @var string Command Description
      */
     protected $description = "Get Activity";
+    protected $user;
 
     /**
      * @inheritdoc
      */
     public function handle($arguments)
     {
-
         $moodGenerator = new UserProcessor();
-        $user = $moodGenerator->getUser('');
+        $this->user = $moodGenerator->getUser('');
+
+        $this->checkMood();
+        $this->getPlaces();
+
+
+
+
+
+    }
+    public function getPlaces(){
+        $user = $this->user;
+        $moodName = strtolower($user->retrieveHighestMood()->getName());
+        echo $moodName."\r\n";
+        $url = sprintf("http://localhost:8080/test?mood=%s", $moodName);
+
+
+        $request = \Requests::get($url);
+        $decodedValues = \GuzzleHttp\json_decode($request->body);
+
+        $text = "";
+        foreach($decodedValues as $value){
+            $text.= sprintf("[%s](%s)\r\n", $value->name,$value->url);
+        }
+
+
+
+        $this->replyWithMessage(['text' => $text, 'parse_mode' => 'markdown']);
+    }
+    public function checkMood(){
+
+        $user = $this->user;
 
         $this->replyWithMessage(['text' => "Ok checking the mood..."]);
 
@@ -41,12 +72,6 @@ class ActivityCommand extends Command
         $text = $user->createMoodTable();
         $text = '<pre>' . $text . '</pre>';
         $this->replyWithMessage(['text' => $text, 'parse_mode' => 'html']);
-
-        $url = sprintf("http://localhost:8080/test?mood=%s", strtolower($user->retrieveHighestMood()->getName()));
-
-
-        $request = \Requests::get($url);
-
 
 
     }
